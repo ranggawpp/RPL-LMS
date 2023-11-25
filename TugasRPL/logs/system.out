@@ -1,9 +1,0 @@
-Listening for transport dt_socket at address: 8000
-00:31:44,962 INFO  ~ Starting D:\Code\RPL\TugasRPL
-:: loading settings :: url = jar:file:/C:/play-1.5.0/framework/lib/ivy-2.4.0.jar!/org/apache/ivy/core/settings/ivysettings.xml
-00:31:45,180 INFO  ~ Module docviewer is available (C:\play-1.5.0\modules\docviewer)
-00:31:45,181 INFO  ~ Module crud is available (C:\play-1.5.0\modules\crud)
-00:31:45,568 WARN  ~ You're running Play! in DEV mode
-00:31:45,621 INFO  ~ Listening for HTTP on port 9000 (Waiting a first request to start) ...
-~ Server is up and running
-00:32:45,496 INFO  ~ Application 'LMS' is now started !
