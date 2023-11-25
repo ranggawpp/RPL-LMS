@@ -1,0 +1,291 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Sequence Diagram - Peminjam - Library Management System</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initGridDiagram();">
+	<div style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;" id="spotlight_top">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;" id="spotlight_bottom">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;" id="spotlight_left">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;" id="spotlight_right">
+	</div>
+	<canvas width="100" style="position:absolute; z-index:2; visibility:hidden" id="spotlight_c" height="100">
+	</canvas>
+	<div style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" id="spotLightResourcesTop">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+<a href="#top"><img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>				</td>
+				<td>
+<a href="javascript:clearSpotLightFromOpenSpecButton();"><img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" id="spotLightResourcesRight">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+<a href="#top"><img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>				</td>
+			</tr>
+			<tr>
+				<td>
+<a href="javascript:clearSpotLightFromOpenSpecButton();"><img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute;z-index:4;visibility:hidden" id="linkPopupMenuLayer">
+		<table border="0" width="100%" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" id="linkPopupMenuTable">
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="referenceIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="subdiagramIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="transitorIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="documentationIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		Library Management System	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div style="position:absolute; z-index:21; visibility:hidden" id="referencedBys">
+		<table border="0" width="100%" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" id="referencedBysTable">
+		</table>
+	</div>
+	<div style="position:absolute; z-index:21; visibility:hidden" id="vplink">
+		<table border="1" cellpadding="0" cellspacing="0" bordercolor="#A9BFD3">
+			<tr>
+				<td>
+					<table border="0" cellpadding="0" width="100%" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+								<select onchange="vpLinkToggleName()" id="vplink-linkType">
+	<option value="Project Link">Project Link</option>
+	<option value="Page URL">Page URL</option>
+</select>
+							</td>
+							<td style="font-size: 12px;" align="right">
+								<input onclick="javascript: vpLinkToggleName()" id="vplink-checkbox" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p class="PageTitle">
+		<span id="PageTitleText">
+			Sequence Diagram - Peminjam - Library Management System		</span>
+<a onclick="javascript: showVpLink('Library Management System.vpp://diagram/yLGtQDGD.AACAQhU', 'Peminjam - Library Management System\nLibrary Management System.vpp://diagram/yLGtQDGD.AACAQhU', 'Peminjam - Library Management System', this); return false;" style="padding-left: 16px; font-size: 12px" href="#"><img src="../images/icons/link.png" border="0"> link</a>	</p>
+	<div style="position: relative; padding-bottom: 20px;">
+		<table border="0" cellpadding="0" width="100%" cellspacing="0" style="position: absolute; top: 0; left: 0; z-index: 20;" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),hideLinkPopup(),hideReferencedBys();">
+			<tr>
+				<td>
+<span class="TableContent">Jump to:</span>					<select id="SelectShape" class="TableContent" onChange="scrollWin('diagram', this.value);hideLinkPopup();showSpotLight('diagram', this.value)">
+<option value="">Please select a model element</option>
+<option value="shape|630.0|136.0|8.0|227.0|Activation_8PNzQDGD_AACAQ2f.html|Activation_8PNzQDGD_AACAQ2f.html|iPNzQDGD.AACAQ2h" id="optioniPNzQDGD.AACAQ2h">Activation : Activation</option>
+<option value="shape|232.0|120.0|8.0|243.0|Activation_QXFzQDGD_AACAQ2L.html|Activation_QXFzQDGD_AACAQ2L.html|IXFzQDGD.AACAQ2N" id="optionIXFzQDGD.AACAQ2N">Activation : Activation</option>
+<option value="shape|201.0|40.0|70.0|68.0|InteractionLifeLine_u9pzQDGD_AACAQ1r.html|InteractionLifeLine_u9pzQDGD_AACAQ1r.html|u9pzQDGD.AACAQ1q" id="optionu9pzQDGD.AACAQ1q">Login Sukses : Lifeline</option>
+<option value="shape|545.0|40.0|179.0|54.0|InteractionLifeLine_HvRzQDGD_AACAQ1g.html|InteractionLifeLine_HvRzQDGD_AACAQ1g.html|HvRzQDGD.AACAQ1f" id="optionHvRzQDGD.AACAQ1f">Library Management System : Lifeline</option>
+<option value="shape|42.0|40.0|60.0|35.0|InteractionActor_JDhzQDGD_AACAQ1X.html|InteractionActor_JDhzQDGD_AACAQ1X.html|JDhzQDGD.AACAQ1W" id="optionJDhzQDGD.AACAQ1W">Peminjam : Actor</option>
+</select>				</td>
+			</tr>
+		</table>
+		<table border="0" cellpadding="0" width="100%" cellspacing="0" style="position: relative; top: 24;">
+			<tr>
+				<td>
+					<img id="diagram" src="../images/Peminjam_Library_Management_System.png" usemap="#diagram_map" class="Image" width="728" height="387"/>
+					<map name="diagram_map">
+<area imageId="diagram" coords="66.0, 113.0, 66.0, 127.0, 242.0, 127.0, 242.0, 113.0" coords2="66.0, 113.0, 66.0, 127.0, 242.0, 127.0, 242.0, 113.0" shape="poly" alt="1: Login:Message" id="areadiagram_map__nFzQDGD.AACAQ2H_default" href="Message_TnFzQDGD_AACAQ2E.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="230.0, 215.0, 230.0, 229.0, 640.0, 229.0, 640.0, 215.0" coords2="230.0, 215.0, 230.0, 229.0, 640.0, 229.0, 640.0, 215.0" shape="poly" alt="1.3: Meminjam Buku:Message" id="areadiagram_map_MPNzQDGD.AACAQ2b_default" href="Message_f3NzQDGD_AACAQ2Y.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="230.0, 258.0, 230.0, 272.0, 640.0, 272.0, 640.0, 258.0" coords2="230.0, 258.0, 230.0, 272.0, 640.0, 272.0, 640.0, 258.0" shape="poly" alt="1.4: Mengembalikan Buku:Message" id="areadiagram_map_EZTzQDGD.AACAQ2r_default" href="Message_npTzQDGD_AACAQ2o.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="230.0, 301.0, 230.0, 315.0, 640.0, 315.0, 640.0, 301.0" coords2="230.0, 301.0, 230.0, 315.0, 640.0, 315.0, 640.0, 301.0" shape="poly" alt="1.5: Memperpanjang Peminjaman:Message" id="areadiagram_map_Be7zQDGD.AACAQ3o_default" href="Message_se7zQDGD_AACAQ3l.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="230.0, 344.0, 230.0, 358.0, 640.0, 358.0, 640.0, 344.0" coords2="230.0, 344.0, 230.0, 358.0, 640.0, 358.0, 640.0, 344.0" shape="poly" alt="1.6: Membayar Denda:Message" id="areadiagram_map_oAPzQDGD.AACAQ3._default" href="Message_H_3zQDGD_AACAQ37.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="230.0, 129.0, 230.0, 143.0, 640.0, 143.0, 640.0, 129.0" coords2="230.0, 129.0, 230.0, 143.0, 640.0, 143.0, 640.0, 129.0" shape="poly" alt="1.1: Mencari Buku:Message" id="areadiagram_map_NUALQDGD.AACAQ4u_default" href="Message_mUALQDGD_AACAQ4r.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="230.0, 172.0, 230.0, 186.0, 640.0, 186.0, 640.0, 172.0" coords2="230.0, 172.0, 230.0, 186.0, 640.0, 186.0, 640.0, 172.0" shape="poly" alt="1.2: Melihat Detail Buku:Message" id="areadiagram_map_laQLQDGD.AACAQ48_default" href="Message_2aQLQDGD_AACAQ45.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="630, 136, 638, 363" coords2="630, 136, 638, 363" shape="rect" alt="Activation:Activation" id="areadiagram_map_iPNzQDGD.AACAQ2h_default" href="Activation_8PNzQDGD_AACAQ2f.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="232, 120, 240, 363" coords2="232, 120, 240, 363" shape="rect" alt="Activation:Activation" id="areadiagram_map_IXFzQDGD.AACAQ2N_default" href="Activation_QXFzQDGD_AACAQ2L.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="201, 40, 271, 108" coords2="201, 40, 271, 108" shape="rect" alt="Login Sukses:Lifeline" id="areadiagram_map_u9pzQDGD.AACAQ1q_default" href="InteractionLifeLine_u9pzQDGD_AACAQ1r.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="545, 40, 724, 94" coords2="545, 40, 724, 94" shape="rect" alt="Library Management System:Lifeline" id="areadiagram_map_HvRzQDGD.AACAQ1f_default" href="InteractionLifeLine_HvRzQDGD_AACAQ1g.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="42, 40, 102, 75" coords2="42, 40, 102, 75" shape="rect" alt="Peminjam:Actor" id="areadiagram_map_JDhzQDGD.AACAQ1W_default" href="InteractionActor_JDhzQDGD_AACAQ1X.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+</map>
+				</td>
+			</tr>
+		</table>
+		<p>
+		</p>
+	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+				Model Elements			</td>
+		</tr>
+		<tr>
+			<td style="height: 5px">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="4" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="30%">
+<span class="TableHeaderText">Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td>
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Activation.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Activation.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="Activation_8PNzQDGD_AACAQ2f.html" class="ItemLink">Activation : Activation</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Activation.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Activation.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="Activation_QXFzQDGD_AACAQ2L.html" class="ItemLink">Activation : Activation</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/LifeLine.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/LifeLine.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="InteractionLifeLine_u9pzQDGD_AACAQ1r.html" class="ItemLink">Login Sukses : Lifeline</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/LifeLine.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/LifeLine.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="InteractionLifeLine_HvRzQDGD_AACAQ1g.html" class="ItemLink">Library Management System : Lifeline</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Actor.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Actor.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="InteractionActor_JDhzQDGD_AACAQ1X.html" class="ItemLink">Peminjam : Actor</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<div style="height: 20px">
+	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		Library Management System	</div>
+</body>
+</html>

@@ -1,0 +1,1019 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Textual Analysis - Textual Analysis - Library Management System</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initGridDiagram();">
+	<div style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;" id="spotlight_top">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;" id="spotlight_bottom">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;" id="spotlight_left">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;" id="spotlight_right">
+	</div>
+	<canvas width="100" style="position:absolute; z-index:2; visibility:hidden" id="spotlight_c" height="100">
+	</canvas>
+	<div style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" id="spotLightResourcesTop">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+<a href="#top"><img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>				</td>
+				<td>
+<a href="javascript:clearSpotLightFromOpenSpecButton();"><img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" id="spotLightResourcesRight">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+<a href="#top"><img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>				</td>
+			</tr>
+			<tr>
+				<td>
+<a href="javascript:clearSpotLightFromOpenSpecButton();"><img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute;z-index:4;visibility:hidden" id="linkPopupMenuLayer">
+		<table border="0" width="100%" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" id="linkPopupMenuTable">
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="referenceIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="subdiagramIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="transitorIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="documentationIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		Library Management System	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div style="position:absolute; z-index:21; visibility:hidden" id="referencedBys">
+		<table border="0" width="100%" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" id="referencedBysTable">
+		</table>
+	</div>
+	<div style="position:absolute; z-index:21; visibility:hidden" id="vplink">
+		<table border="1" cellpadding="0" cellspacing="0" bordercolor="#A9BFD3">
+			<tr>
+				<td>
+					<table border="0" cellpadding="0" width="100%" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+								<select onchange="vpLinkToggleName()" id="vplink-linkType">
+	<option value="Project Link">Project Link</option>
+	<option value="Page URL">Page URL</option>
+</select>
+							</td>
+							<td style="font-size: 12px;" align="right">
+								<input onclick="javascript: vpLinkToggleName()" id="vplink-checkbox" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p class="PageTitle">
+		<span id="PageTitleText">
+			Textual Analysis - Textual Analysis - Library Management System		</span>
+<a onclick="javascript: showVpLink('Library Management System.vpp://diagram/iXyxgDGD.AACAQyF', 'Textual Analysis - Library Management System\nLibrary Management System.vpp://diagram/iXyxgDGD.AACAQyF', 'Textual Analysis - Library Management System', this); return false;" style="padding-left: 16px; font-size: 12px" href="#"><img src="../images/icons/link.png" border="0"> link</a>	</p>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Problem Statement			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableContent">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;font-weight:normal;margin-right:0;margin-left:0;font-size:22px;font-family:Dialog;">
+    <p style="margin-top:0pt;margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;">
+      <span bgcolor="#ffff00" style="background-color:#ffff00;">Library 
+      Management System</span>
+    </p>
+    <p style="margin-top:0pt;margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;">
+      &nbsp;
+    </p>
+    <p style="margin-top:0pt;margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;">
+      <span bgcolor="#ffff00" style="background-color:#ffff00;">Library 
+      Management System</span> (LMS) atau Sistem Manajemen Perpustakaan adalah 
+      perangkat lunak yang dirancang untuk membantu perpustakaan mengelola 
+      sumber daya, layanan, dan operasinya secara efisien. Ini adalah alat 
+      komprehensif yang mengotomatiskan berbagai tugas yang terlibat dalam 
+      fungsi perpustakaan, sehingga memudahkan <span bgcolor="#ffff00" style="background-color:#ffff00;">pustakawan</span>&nbsp;<span bgcolor="#ffff00" style="background-color:#ffff00;">mengelola 
+      buku</span>, <span bgcolor="#ffff00" style="background-color:#ffff00;">mengelola 
+      catatan</span>, <span bgcolor="#ffff00" style="background-color:#ffff00;">mengelola 
+      akun</span>, dan banyak lagi. Berikut adalah beberapa skenario dari 
+      sistem yaitu sebagai berikut:
+    </p>
+    <p style="margin-top:0pt;margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;">
+      &nbsp;
+    </p>
+    <ol class="decimal" margin-left-ltr="50" margin-right-rtl="50" style="margin-top:0px;list-style-type:none;margin-left:40pt;margin-bottom:0px;">
+      <li style="margin-top:0;margin-right:0;margin-left:0;margin-bottom:0;">
+        <span bgcolor="#ffff00" style="background-color:#ffff00;">Peminjam</span> 
+        yang mendaftarkan dirinya sebagai <span bgcolor="#ffff00" style="background-color:#ffff00;">peminjam</span> 
+        baru pada awalnya dianggap sebagai <span bgcolor="#ffff00" style="background-color:#ffff00;">staff</span> 
+        atau <span bgcolor="#ffff00" style="background-color:#ffff00;">mahasiswa</span> 
+        untuk sistem perpustakaan. Agar <span bgcolor="#ffff00" style="background-color:#ffff00;">peminjam</span> 
+        dapat terdaftar sebagai <span bgcolor="#ffff00" style="background-color:#ffff00;">peminjam</span> 
+        baru, tersedia formulir <span bgcolor="#ffff00" style="background-color:#ffff00;">pendaftaran</span> 
+        yang harus diisi oleh <span bgcolor="#ffff00" style="background-color:#ffff00;">peminjam</span>.
+      </li>
+      <li style="margin-top:0;margin-right:0;margin-left:0;margin-bottom:0;">
+        Setelah <span bgcolor="#ffff00" style="background-color:#ffff00;">pendaftaran</span>, 
+        <span bgcolor="#ffff00" style="background-color:#ffff00;">akun</span> 
+        akan diberikan kepada <span bgcolor="#ffff00" style="background-color:#ffff00;">peminjam</span> 
+        oleh <span bgcolor="#ffff00" style="background-color:#ffff00;">pustakawan</span>. 
+        Pada <span bgcolor="#ffff00" style="background-color:#ffff00;">akun</span> 
+        tersebut terdapat informasi mengenai <span bgcolor="#ffff00" style="background-color:#ffff00;">buku</span> 
+        yang dipinjam, <span bgcolor="#ffff00" style="background-color:#ffff00;">buku</span> 
+        yang dikembalikan, <span bgcolor="#ffff00" style="background-color:#ffff00;">buku</span> 
+        yang hilang dan denda.
+      </li>
+      <li style="margin-top:0;margin-right:0;margin-left:0;margin-bottom:0;">
+        Setelah mendapatkan akkun, <span bgcolor="#ffff00" style="background-color:#ffff00;">peminjam</span> 
+        dapat <span bgcolor="#ffff00" style="background-color:#ffff00;">meminjam 
+        buku</span> sesuai kebutuhan.
+      </li>
+      <li style="margin-top:0;margin-right:0;margin-left:0;margin-bottom:0;">
+        <span bgcolor="#ffff00" style="background-color:#ffff00;">Peminjam</span> 
+        dapat <span bgcolor="#ffff00" style="background-color:#ffff00;">memperpanjang 
+        peminjaman</span>&nbsp;<span bgcolor="#ffff00" style="background-color:#ffff00;">buku</span> 
+        yang berarti <span bgcolor="#ffff00" style="background-color:#ffff00;">peminjam</span> 
+        bisa mendapatkan tanggal jatuh tempo baru untuk <span bgcolor="#ffff00" style="background-color:#ffff00;">buku</span> 
+        yang diinginkan jika pengguna telah memperpanjangnya.
+      </li>
+      <li style="margin-top:0;margin-right:0;margin-left:0;margin-bottom:0;">
+        Jika <span bgcolor="#ffff00" style="background-color:#ffff00;">peminjam</span> 
+        lupa <span bgcolor="#ffff00" style="background-color:#ffff00;">mengembalikan 
+        buku</span> sebelum tanggal jatuh tempo, maka pengguna <span bgcolor="#ffff00" style="background-color:#ffff00;">membayar 
+        denda</span>. Atau jika <span bgcolor="#ffff00" style="background-color:#ffff00;">peminjam</span> 
+        lupa <span bgcolor="#ffff00" style="background-color:#ffff00;">memperpanjang 
+        peminjaman</span>&nbsp;<span bgcolor="#ffff00" style="background-color:#ffff00;">buku</span> 
+        hingga tanggal jatuh tempo, maka <span bgcolor="#ffff00" style="background-color:#ffff00;">buku</span> 
+        tersebut akan jatuh tempo dan <span bgcolor="#ffff00" style="background-color:#ffff00;">peminjam</span>&nbsp;<span bgcolor="#ffff00" style="background-color:#ffff00;">membayar 
+        denda</span>.
+      </li>
+      <li style="margin-top:0;margin-right:0;margin-left:0;margin-bottom:0;">
+        <span bgcolor="#ffff00" style="background-color:#ffff00;">Pustakawan</span> 
+        mempunyai peran kunci dalam sistem ini. <span bgcolor="#ffff00" style="background-color:#ffff00;">Pustakawan</span> 
+        dapat <span bgcolor="#ffff00" style="background-color:#ffff00;">mengelola 
+        buku</span> dalam <span bgcolor="#ffff00" style="background-color:#ffff00;">database 
+        perpustakaan</span> seperti <span bgcolor="#ffff00" style="background-color:#ffff00;">menambahkan 
+        buku</span>, <span bgcolor="#ffff00" style="background-color:#ffff00;">memperbarui 
+        buku</span>, dan <span bgcolor="#ffff00" style="background-color:#ffff00;">menghapus 
+        buku</span>.
+      </li>
+      <li style="margin-top:0;margin-right:0;margin-left:0;margin-bottom:0;">
+        <span bgcolor="#ffff00" style="background-color:#ffff00;">Pustakawan</span> 
+        juga dapat <span bgcolor="#ffff00" style="background-color:#ffff00;">mengelola 
+        catatan</span>&nbsp;<span bgcolor="#ffff00" style="background-color:#ffff00;">akun</span> 
+        setiap kali <span bgcolor="#ffff00" style="background-color:#ffff00;">peminjam</span>&nbsp;<span bgcolor="#ffff00" style="background-color:#ffff00;">meminjam 
+        buku</span>, <span bgcolor="#ffff00" style="background-color:#ffff00;">mengembalikan 
+        buku</span>, <span bgcolor="#ffff00" style="background-color:#ffff00;">memperpanjang 
+        peminjaman</span>&nbsp;<span bgcolor="#ffff00" style="background-color:#ffff00;">buku</span> 
+        atau <span bgcolor="#ffff00" style="background-color:#ffff00;">membayar 
+        denda</span>.
+      </li>
+      <li style="margin-top:0;margin-right:0;margin-left:0;margin-bottom:0;">
+        Selain itu <span bgcolor="#ffff00" style="background-color:#ffff00;">Pustakawan</span> 
+        dan <span bgcolor="#ffff00" style="background-color:#ffff00;">Peminjam</span> 
+        dapat <span bgcolor="#ffff00" style="background-color:#ffff00;">mencari 
+        buku</span> dan <span bgcolor="#ffff00" style="background-color:#ffff00;">melihat 
+        detail buku</span>
+      </li>
+    </ol>
+    <p style="margin-top:0pt;margin-right:0pt;margin-left:0pt;margin-bottom:.0001pt;">
+      &nbsp;
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr>
+			<td class="TableHeaderLine2">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+Candidate items			</td>
+		</tr>
+		<tr>
+			<td class="TableCellSpaceHolder5PxTall">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="12" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="12" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="25%">
+<span class="TableHeaderText">Candidate Class</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td>
+<span class="TableHeaderText">Extracted Text</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td>
+<span class="TableHeaderText">Type</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td>
+<span class="TableHeaderText">Description</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td>
+<span class="TableHeaderText">Occurrence</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td>
+<span class="TableHeaderText">Highlight</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="12" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+Library Management System			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Library Management System			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span style="line-height: 18px">Class</span>				</span>
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+2			</td>
+			<td>
+			</td>
+			<td>
+				<div style="background: #ffff00; line-height: 12px; margin: 3px;">
+&nbsp;				</div>
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+pustakawan			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+pustakawan			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Actor.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Actor.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span style="line-height: 18px">Actor</span>				</span>
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+6			</td>
+			<td>
+			</td>
+			<td>
+				<div style="background: #ffff00; line-height: 12px; margin: 3px;">
+&nbsp;				</div>
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+mengelola buku			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+mengelola buku			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span style="line-height: 18px">Use Case</span>				</span>
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+2			</td>
+			<td>
+			</td>
+			<td>
+				<div style="background: #ffff00; line-height: 12px; margin: 3px;">
+&nbsp;				</div>
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+mengelola catatan			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+mengelola catatan			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span style="line-height: 18px">Use Case</span>				</span>
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+2			</td>
+			<td>
+			</td>
+			<td>
+				<div style="background: #ffff00; line-height: 12px; margin: 3px;">
+&nbsp;				</div>
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+mengelola akun			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+mengelola akun			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span style="line-height: 18px">Use Case</span>				</span>
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+1			</td>
+			<td>
+			</td>
+			<td>
+				<div style="background: #ffff00; line-height: 12px; margin: 3px;">
+&nbsp;				</div>
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+Peminjam			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+Peminjam			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Actor.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Actor.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span style="line-height: 18px">Actor</span>				</span>
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+14			</td>
+			<td>
+			</td>
+			<td>
+				<div style="background: #ffff00; line-height: 12px; margin: 3px;">
+&nbsp;				</div>
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+staff			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+staff			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Actor.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Actor.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span style="line-height: 18px">Actor</span>				</span>
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+1			</td>
+			<td>
+			</td>
+			<td>
+				<div style="background: #ffff00; line-height: 12px; margin: 3px;">
+&nbsp;				</div>
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+mahasiswa			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+mahasiswa			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Actor.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Actor.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span style="line-height: 18px">Actor</span>				</span>
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+1			</td>
+			<td>
+			</td>
+			<td>
+				<div style="background: #ffff00; line-height: 12px; margin: 3px;">
+&nbsp;				</div>
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+pendaftaran			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+pendaftaran			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span style="line-height: 18px">Use Case</span>				</span>
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+2			</td>
+			<td>
+			</td>
+			<td>
+				<div style="background: #ffff00; line-height: 12px; margin: 3px;">
+&nbsp;				</div>
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+akun			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+akun			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span style="line-height: 18px">Class</span>				</span>
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+3			</td>
+			<td>
+			</td>
+			<td>
+				<div style="background: #ffff00; line-height: 12px; margin: 3px;">
+&nbsp;				</div>
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+buku			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+buku			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span style="line-height: 18px">Class</span>				</span>
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+8			</td>
+			<td>
+			</td>
+			<td>
+				<div style="background: #ffff00; line-height: 12px; margin: 3px;">
+&nbsp;				</div>
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+meminjam buku			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+meminjam buku			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span style="line-height: 18px">Use Case</span>				</span>
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+2			</td>
+			<td>
+			</td>
+			<td>
+				<div style="background: #ffff00; line-height: 12px; margin: 3px;">
+&nbsp;				</div>
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+memperpanjang peminjaman			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+memperpanjang peminjaman			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span style="line-height: 18px">Use Case</span>				</span>
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+3			</td>
+			<td>
+			</td>
+			<td>
+				<div style="background: #ffff00; line-height: 12px; margin: 3px;">
+&nbsp;				</div>
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+mengembalikan buku			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+mengembalikan buku			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span style="line-height: 18px">Use Case</span>				</span>
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+2			</td>
+			<td>
+			</td>
+			<td>
+				<div style="background: #ffff00; line-height: 12px; margin: 3px;">
+&nbsp;				</div>
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+membayar denda			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+membayar denda			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span style="line-height: 18px">Use Case</span>				</span>
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+3			</td>
+			<td>
+			</td>
+			<td>
+				<div style="background: #ffff00; line-height: 12px; margin: 3px;">
+&nbsp;				</div>
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+database perpustakaan			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+database perpustakaan			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span style="line-height: 18px">Class</span>				</span>
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+1			</td>
+			<td>
+			</td>
+			<td>
+				<div style="background: #ffff00; line-height: 12px; margin: 3px;">
+&nbsp;				</div>
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+mencari buku			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+mencari buku			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span style="line-height: 18px">Use Case</span>				</span>
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+1			</td>
+			<td>
+			</td>
+			<td>
+				<div style="background: #ffff00; line-height: 12px; margin: 3px;">
+&nbsp;				</div>
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+melihat detail buku			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+melihat detail buku			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span style="line-height: 18px">Use Case</span>				</span>
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+1			</td>
+			<td>
+			</td>
+			<td>
+				<div style="background: #ffff00; line-height: 12px; margin: 3px;">
+&nbsp;				</div>
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+menambahkan buku			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+menambahkan buku			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span style="line-height: 18px">Use Case</span>				</span>
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+1			</td>
+			<td>
+			</td>
+			<td>
+				<div style="background: #ffff00; line-height: 12px; margin: 3px;">
+&nbsp;				</div>
+			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td class="TableContent">
+memperbarui buku			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+memperbarui buku			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span style="line-height: 18px">Use Case</span>				</span>
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+1			</td>
+			<td>
+			</td>
+			<td>
+				<div style="background: #ffff00; line-height: 12px; margin: 3px;">
+&nbsp;				</div>
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td class="TableContent">
+menghapus buku			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+menghapus buku			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <span style="line-height: 18px">Use Case</span>				</span>
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+			</td>
+			<td>
+			</td>
+			<td class="TableContent">
+1			</td>
+			<td>
+			</td>
+			<td>
+				<div style="background: #ffff00; line-height: 12px; margin: 3px;">
+&nbsp;				</div>
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<p>
+	</p>
+	<div style="height: 20px">
+	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		Library Management System	</div>
+</body>
+</html>

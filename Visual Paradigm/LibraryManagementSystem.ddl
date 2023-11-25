@@ -1,0 +1,13 @@
+CREATE TABLE Pustakawan (ID int(10) NOT NULL AUTO_INCREMENT, Name varchar(255), Password varchar(255), SearchString varchar(255), PRIMARY KEY (ID));
+CREATE TABLE Buku (ISBN varchar(255) NOT NULL, PustakawanID int(10), Title varchar(255), Author varchar(255), Publication varchar(255), PRIMARY KEY (ISBN));
+CREATE TABLE Peminjam (ID int(10) NOT NULL AUTO_INCREMENT, Name varchar(255), Dept varchar(255), Class varchar(255), Discriminator varchar(255) NOT NULL, PRIMARY KEY (ID));
+CREATE TABLE `Library Management System` (UserType varchar(255), Username varchar(255), Password varchar(255));
+CREATE TABLE `Database Perpustakaan` (List_of_books int(10), PustakawanID int(10));
+CREATE TABLE Akun (No_borrowed_books int(10), No_returned_books int(10), No_lost_books int(10), Fine_amount float);
+ALTER TABLE Peminjam ADD CONSTRAINT FKPeminjam870185 FOREIGN KEY () REFERENCES `Library Management System` ();
+ALTER TABLE Buku ADD CONSTRAINT FKBuku558156 FOREIGN KEY () REFERENCES `Library Management System` ();
+ALTER TABLE `Database Perpustakaan` ADD CONSTRAINT `FKDatabase P174975` FOREIGN KEY (PustakawanID) REFERENCES Pustakawan (ID);
+ALTER TABLE Pustakawan ADD CONSTRAINT FKPustakawan690544 FOREIGN KEY () REFERENCES `Library Management System` ();
+ALTER TABLE Buku ADD CONSTRAINT FKBuku396929 FOREIGN KEY (PustakawanID) REFERENCES Pustakawan (ID);
+ALTER TABLE Buku ADD CONSTRAINT FKBuku736062 FOREIGN KEY () REFERENCES `Database Perpustakaan` ();
+ALTER TABLE Akun ADD CONSTRAINT FKAkun696964 FOREIGN KEY () REFERENCES `Database Perpustakaan` ();

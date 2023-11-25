@@ -1,0 +1,363 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Sequence Diagram - Pustakawan - Library Management System</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initGridDiagram();">
+	<div style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;" id="spotlight_top">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;" id="spotlight_bottom">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;" id="spotlight_left">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;" id="spotlight_right">
+	</div>
+	<canvas width="100" style="position:absolute; z-index:2; visibility:hidden" id="spotlight_c" height="100">
+	</canvas>
+	<div style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" id="spotLightResourcesTop">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+<a href="#top"><img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>				</td>
+				<td>
+<a href="javascript:clearSpotLightFromOpenSpecButton();"><img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" id="spotLightResourcesRight">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+<a href="#top"><img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>				</td>
+			</tr>
+			<tr>
+				<td>
+<a href="javascript:clearSpotLightFromOpenSpecButton();"><img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute;z-index:4;visibility:hidden" id="linkPopupMenuLayer">
+		<table border="0" width="100%" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" id="linkPopupMenuTable">
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="referenceIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="subdiagramIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="transitorIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="documentationIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		Library Management System	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div style="position:absolute; z-index:21; visibility:hidden" id="referencedBys">
+		<table border="0" width="100%" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" id="referencedBysTable">
+		</table>
+	</div>
+	<div style="position:absolute; z-index:21; visibility:hidden" id="vplink">
+		<table border="1" cellpadding="0" cellspacing="0" bordercolor="#A9BFD3">
+			<tr>
+				<td>
+					<table border="0" cellpadding="0" width="100%" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+								<select onchange="vpLinkToggleName()" id="vplink-linkType">
+	<option value="Project Link">Project Link</option>
+	<option value="Page URL">Page URL</option>
+</select>
+							</td>
+							<td style="font-size: 12px;" align="right">
+								<input onclick="javascript: vpLinkToggleName()" id="vplink-checkbox" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p class="PageTitle">
+		<span id="PageTitleText">
+			Sequence Diagram - Pustakawan - Library Management System		</span>
+<a onclick="javascript: showVpLink('Library Management System.vpp://diagram/9vytQDGD.AACAQg_', 'Pustakawan - Library Management System\nLibrary Management System.vpp://diagram/9vytQDGD.AACAQg_', 'Pustakawan - Library Management System', this); return false;" style="padding-left: 16px; font-size: 12px" href="#"><img src="../images/icons/link.png" border="0"> link</a>	</p>
+	<div style="position: relative; padding-bottom: 20px;">
+		<table border="0" cellpadding="0" width="100%" cellspacing="0" style="position: absolute; top: 0; left: 0; z-index: 20;" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),hideLinkPopup(),hideReferencedBys();">
+			<tr>
+				<td>
+<span class="TableContent">Jump to:</span>					<select id="SelectShape" class="TableContent" onChange="scrollWin('diagram', this.value);hideLinkPopup();showSpotLight('diagram', this.value)">
+<option value="">Please select a model element</option>
+<option value="shape|990.0|483.0|7.0|148.0|Activation_yatTQDGD_AACAQwh.html|Activation_yatTQDGD_AACAQwh.html|qatTQDGD.AACAQwj" id="optionqatTQDGD.AACAQwj">Activation : Activation</option>
+<option value="shape|724.0|246.0|7.0|189.0|Activation_DA1TQDGD_AACAQwJ.html|Activation_DA1TQDGD_AACAQwJ.html|TA1TQDGD.AACAQwL" id="optionTA1TQDGD.AACAQwL">Activation : Activation</option>
+<option value="shape|497.0|84.0|7.0|121.0|Activation_4kFTQDGD_AACAQvx.html|Activation_4kFTQDGD_AACAQvx.html|UkFTQDGD.AACAQvz" id="optionUkFTQDGD.AACAQvz">Activation : Activation</option>
+<option value="shape|209.0|64.0|7.0|468.0|Activation_1WpTQDGD_AACAQvd.html|Activation_1WpTQDGD_AACAQvd.html|tWpTQDGD.AACAQvf" id="optiontWpTQDGD.AACAQvf">Activation : Activation</option>
+<option value="shape|932.0|2.0|122.0|34.0|InteractionLifeLine_AQRTQDGD_AACAQvL.html|InteractionLifeLine_AQRTQDGD_AACAQvL.html|AQRTQDGD.AACAQvK" id="optionAQRTQDGD.AACAQvK">Mengelola Catatan : Lifeline</option>
+<option value="shape|674.0|2.0|107.0|34.0|InteractionLifeLine_hsBTQDGD_AACAQvC.html|InteractionLifeLine_hsBTQDGD_AACAQvC.html|BsBTQDGD.AACAQvB" id="optionBsBTQDGD.AACAQvB">Mengelola Buku : Lifeline</option>
+<option value="shape|447.0|2.0|107.0|34.0|InteractionLifeLine_DZeTQDGD_AACAQu5.html|InteractionLifeLine_DZeTQDGD_AACAQu5.html|DZeTQDGD.AACAQu4" id="optionDZeTQDGD.AACAQu4">Mengelola Akun : Lifeline</option>
+<option value="shape|167.0|2.0|91.0|34.0|InteractionLifeLine_cSOTQDGD_AACAQuu.html|InteractionLifeLine_cSOTQDGD_AACAQuu.html|cSOTQDGD.AACAQut" id="optioncSOTQDGD.AACAQut">Login Sukses : Lifeline</option>
+<option value="shape|12.0|2.0|59.0|34.0|InteractionActor_rpWTQDGD_AACAQuj.html|InteractionActor_rpWTQDGD_AACAQuj.html|rpWTQDGD.AACAQui" id="optionrpWTQDGD.AACAQui">Pustakawan : Actor</option>
+</select>				</td>
+			</tr>
+		</table>
+		<table border="0" cellpadding="0" width="100%" cellspacing="0" style="position: relative; top: 24;">
+			<tr>
+				<td>
+					<img id="diagram" src="../images/Pustakawan_Library_Management_System.png" usemap="#diagram_map" class="Image" width="1210" height="655"/>
+					<map name="diagram_map">
+<area imageId="diagram" coords="35.0, 57.0, 35.0, 71.0, 219.0, 71.0, 219.0, 57.0" coords2="35.0, 57.0, 35.0, 71.0, 219.0, 71.0, 219.0, 57.0" shape="poly" alt="1: Login:Message" id="areadiagram_map_5WpTQDGD.AACAQvZ_default" href="Message_2WpTQDGD_AACAQvW.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="207.0, 83.0, 207.0, 97.0, 507.0, 97.0, 507.0, 83.0" coords2="207.0, 83.0, 207.0, 97.0, 507.0, 97.0, 507.0, 83.0" shape="poly" alt="1.1: Mengelola Akun:Message" id="areadiagram_map_gkFTQDGD.AACAQvt_default" href="Message_zEFTQDGD_AACAQvq.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="207.0, 245.0, 207.0, 259.0, 734.0, 259.0, 734.0, 245.0" coords2="207.0, 245.0, 207.0, 259.0, 734.0, 259.0, 734.0, 245.0" shape="poly" alt="1.2: Mengelola Buku:Message" id="areadiagram_map_RA1TQDGD.AACAQv9_default" href="Message_KA1TQDGD_AACAQv6.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="207.0, 476.0, 207.0, 490.0, 1000.0, 490.0, 1000.0, 476.0" coords2="207.0, 476.0, 207.0, 490.0, 1000.0, 490.0, 1000.0, 476.0" shape="poly" alt="1.3: Mengelola Catatan:Message" id="areadiagram_map_nqtTQDGD.AACAQwV_default" href="Message_1qtTQDGD_AACAQwS.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="527.0, 99.0, 527.0, 102.0, 495.0, 102.0, 495.0, 116.0, 527.0, 116.0, 527.0, 122.0, 495.0, 122.0, 495.0, 136.0, 527.0, 136.0, 527.0, 139.0, 541.0, 139.0, 541.0, 136.0, 544.0, 136.0, 544.0, 122.0, 541.0, 122.0, 541.0, 116.0, 544.0, 116.0, 544.0, 102.0, 541.0, 102.0, 541.0, 99.0" coords2="527.0, 99.0, 527.0, 102.0, 495.0, 102.0, 495.0, 116.0, 527.0, 116.0, 527.0, 122.0, 495.0, 122.0, 495.0, 136.0, 527.0, 136.0, 527.0, 139.0, 541.0, 139.0, 541.0, 136.0, 544.0, 136.0, 544.0, 122.0, 541.0, 122.0, 541.0, 116.0, 544.0, 116.0, 544.0, 102.0, 541.0, 102.0, 541.0, 99.0" shape="poly" alt="1.1.1: Menambahkan Akun:Message" id="areadiagram_map_XujTQDGD.AACAQxJ_default" href="Message_pujTQDGD_AACAQxG.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="523.0, 135.0, 523.0, 138.0, 495.0, 138.0, 495.0, 152.0, 523.0, 152.0, 523.0, 158.0, 495.0, 158.0, 495.0, 172.0, 523.0, 172.0, 523.0, 175.0, 537.0, 175.0, 537.0, 172.0, 540.0, 172.0, 540.0, 158.0, 537.0, 158.0, 537.0, 152.0, 540.0, 152.0, 540.0, 138.0, 537.0, 138.0, 537.0, 135.0" coords2="523.0, 135.0, 523.0, 138.0, 495.0, 138.0, 495.0, 152.0, 523.0, 152.0, 523.0, 158.0, 495.0, 158.0, 495.0, 172.0, 523.0, 172.0, 523.0, 175.0, 537.0, 175.0, 537.0, 172.0, 540.0, 172.0, 540.0, 158.0, 537.0, 158.0, 537.0, 152.0, 540.0, 152.0, 540.0, 138.0, 537.0, 138.0, 537.0, 135.0" shape="poly" alt="1.1.2: Memperbarui Akun:Message" id="areadiagram_map_7hrTQDGD.AACAQxZ_default" href="Message_5hrTQDGD_AACAQxW.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="527.0, 171.0, 527.0, 174.0, 495.0, 174.0, 495.0, 188.0, 527.0, 188.0, 527.0, 194.0, 495.0, 194.0, 495.0, 208.0, 527.0, 208.0, 527.0, 211.0, 541.0, 211.0, 541.0, 208.0, 544.0, 208.0, 544.0, 194.0, 541.0, 194.0, 541.0, 188.0, 544.0, 188.0, 544.0, 174.0, 541.0, 174.0, 541.0, 171.0" coords2="527.0, 171.0, 527.0, 174.0, 495.0, 174.0, 495.0, 188.0, 527.0, 188.0, 527.0, 194.0, 495.0, 194.0, 495.0, 208.0, 527.0, 208.0, 527.0, 211.0, 541.0, 211.0, 541.0, 208.0, 544.0, 208.0, 544.0, 194.0, 541.0, 194.0, 541.0, 188.0, 544.0, 188.0, 544.0, 174.0, 541.0, 174.0, 541.0, 171.0" shape="poly" alt="1.1.3: Menghapus Akun:Message" id="areadiagram_map_xd7TQDGD.AACAQxr_default" href="Message_yd7TQDGD_AACAQxo.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="754.0, 251.0, 754.0, 254.0, 722.0, 254.0, 722.0, 268.0, 754.0, 268.0, 754.0, 274.0, 722.0, 274.0, 722.0, 288.0, 754.0, 288.0, 754.0, 291.0, 768.0, 291.0, 768.0, 288.0, 771.0, 288.0, 771.0, 274.0, 768.0, 274.0, 768.0, 268.0, 771.0, 268.0, 771.0, 254.0, 768.0, 254.0, 768.0, 251.0" coords2="754.0, 251.0, 754.0, 254.0, 722.0, 254.0, 722.0, 268.0, 754.0, 268.0, 754.0, 274.0, 722.0, 274.0, 722.0, 288.0, 754.0, 288.0, 754.0, 291.0, 768.0, 291.0, 768.0, 288.0, 771.0, 288.0, 771.0, 274.0, 768.0, 274.0, 768.0, 268.0, 771.0, 268.0, 771.0, 254.0, 768.0, 254.0, 768.0, 251.0" shape="poly" alt="1.2.1: Menambahkan Buku:Message" id="areadiagram_map_NDfTQDGD.AACAQyP_default" href="Message_2DfTQDGD_AACAQyM.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="750.0, 287.0, 750.0, 290.0, 722.0, 290.0, 722.0, 304.0, 750.0, 304.0, 750.0, 310.0, 722.0, 310.0, 722.0, 324.0, 750.0, 324.0, 750.0, 327.0, 764.0, 327.0, 764.0, 324.0, 767.0, 324.0, 767.0, 310.0, 764.0, 310.0, 764.0, 304.0, 767.0, 304.0, 767.0, 290.0, 764.0, 290.0, 764.0, 287.0" coords2="750.0, 287.0, 750.0, 290.0, 722.0, 290.0, 722.0, 304.0, 750.0, 304.0, 750.0, 310.0, 722.0, 310.0, 722.0, 324.0, 750.0, 324.0, 750.0, 327.0, 764.0, 327.0, 764.0, 324.0, 767.0, 324.0, 767.0, 310.0, 764.0, 310.0, 764.0, 304.0, 767.0, 304.0, 767.0, 290.0, 764.0, 290.0, 764.0, 287.0" shape="poly" alt="1.2.2: Memperbarui Buku:Message" id="areadiagram_map_CfgzQDGD.AACAQyZ_default" href="Message_AfgzQDGD_AACAQyW.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="754.0, 322.0, 754.0, 325.0, 722.0, 325.0, 722.0, 339.0, 754.0, 339.0, 754.0, 345.0, 722.0, 345.0, 722.0, 359.0, 754.0, 359.0, 754.0, 362.0, 768.0, 362.0, 768.0, 359.0, 771.0, 359.0, 771.0, 345.0, 768.0, 345.0, 768.0, 339.0, 771.0, 339.0, 771.0, 325.0, 768.0, 325.0, 768.0, 322.0" coords2="754.0, 322.0, 754.0, 325.0, 722.0, 325.0, 722.0, 339.0, 754.0, 339.0, 754.0, 345.0, 722.0, 345.0, 722.0, 359.0, 754.0, 359.0, 754.0, 362.0, 768.0, 362.0, 768.0, 359.0, 771.0, 359.0, 771.0, 345.0, 768.0, 345.0, 768.0, 339.0, 771.0, 339.0, 771.0, 325.0, 768.0, 325.0, 768.0, 322.0" shape="poly" alt="1.2.3: Menghapus Buku:Message" id="areadiagram_map_R9IzQDGD.AACAQyr_default" href="Message_i9IzQDGD_AACAQyo.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="754.0, 394.0, 754.0, 397.0, 722.0, 397.0, 722.0, 411.0, 754.0, 411.0, 754.0, 417.0, 722.0, 417.0, 722.0, 431.0, 754.0, 431.0, 754.0, 434.0, 768.0, 434.0, 768.0, 431.0, 771.0, 431.0, 771.0, 417.0, 768.0, 417.0, 768.0, 411.0, 771.0, 411.0, 771.0, 397.0, 768.0, 397.0, 768.0, 394.0" coords2="754.0, 394.0, 754.0, 397.0, 722.0, 397.0, 722.0, 411.0, 754.0, 411.0, 754.0, 417.0, 722.0, 417.0, 722.0, 431.0, 754.0, 431.0, 754.0, 434.0, 768.0, 434.0, 768.0, 431.0, 771.0, 431.0, 771.0, 417.0, 768.0, 417.0, 768.0, 411.0, 771.0, 411.0, 771.0, 397.0, 768.0, 397.0, 768.0, 394.0" shape="poly" alt="1.2.5: Melihat Detail Buku:Message" id="areadiagram_map_yv4zQDGD.AACAQy9_default" href="Message_Cv4zQDGD_AACAQy6.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="754.0, 358.0, 754.0, 361.0, 722.0, 361.0, 722.0, 375.0, 754.0, 375.0, 754.0, 381.0, 722.0, 381.0, 722.0, 395.0, 754.0, 395.0, 754.0, 398.0, 768.0, 398.0, 768.0, 395.0, 771.0, 395.0, 771.0, 381.0, 768.0, 381.0, 768.0, 375.0, 771.0, 375.0, 771.0, 361.0, 768.0, 361.0, 768.0, 358.0" coords2="754.0, 358.0, 754.0, 361.0, 722.0, 361.0, 722.0, 375.0, 754.0, 375.0, 754.0, 381.0, 722.0, 381.0, 722.0, 395.0, 754.0, 395.0, 754.0, 398.0, 768.0, 398.0, 768.0, 395.0, 771.0, 395.0, 771.0, 381.0, 768.0, 381.0, 768.0, 375.0, 771.0, 375.0, 771.0, 361.0, 768.0, 361.0, 768.0, 358.0" shape="poly" alt="1.2.4: Mencari Buku:Message" id="areadiagram_map_JqCzQDGD.AACAQzx_default" href="Message_qqCzQDGD_AACAQzu.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1016.0, 493.0, 1016.0, 496.0, 987.0, 496.0, 987.0, 510.0, 1016.0, 510.0, 1016.0, 516.0, 987.0, 516.0, 987.0, 530.0, 1016.0, 530.0, 1016.0, 533.0, 1030.0, 533.0, 1030.0, 530.0, 1033.0, 530.0, 1033.0, 516.0, 1030.0, 516.0, 1030.0, 510.0, 1033.0, 510.0, 1033.0, 496.0, 1030.0, 496.0, 1030.0, 493.0" coords2="1016.0, 493.0, 1016.0, 496.0, 987.0, 496.0, 987.0, 510.0, 1016.0, 510.0, 1016.0, 516.0, 987.0, 516.0, 987.0, 530.0, 1016.0, 530.0, 1016.0, 533.0, 1030.0, 533.0, 1030.0, 530.0, 1033.0, 530.0, 1033.0, 516.0, 1030.0, 516.0, 1030.0, 510.0, 1033.0, 510.0, 1033.0, 496.0, 1030.0, 496.0, 1030.0, 493.0" shape="poly" alt="1.3.1: Menambahkan Catatan:Message" id="areadiagram_map_iVazQDGD.AACAQ0T_default" href="Message_gVazQDGD_AACAQ0Q.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1016.0, 543.0, 1016.0, 546.0, 987.0, 546.0, 987.0, 560.0, 1016.0, 560.0, 1016.0, 565.0, 987.0, 565.0, 987.0, 579.0, 1016.0, 579.0, 1016.0, 582.0, 1030.0, 582.0, 1030.0, 579.0, 1033.0, 579.0, 1033.0, 565.0, 1030.0, 565.0, 1030.0, 560.0, 1033.0, 560.0, 1033.0, 546.0, 1030.0, 546.0, 1030.0, 543.0" coords2="1016.0, 543.0, 1016.0, 546.0, 987.0, 546.0, 987.0, 560.0, 1016.0, 560.0, 1016.0, 565.0, 987.0, 565.0, 987.0, 579.0, 1016.0, 579.0, 1016.0, 582.0, 1030.0, 582.0, 1030.0, 579.0, 1033.0, 579.0, 1033.0, 565.0, 1030.0, 565.0, 1030.0, 560.0, 1033.0, 560.0, 1033.0, 546.0, 1030.0, 546.0, 1030.0, 543.0" shape="poly" alt="1.3.2: Memperbarui Catatan:Message" id="areadiagram_map_syWzQDGD.AACAQ0l_default" href="Message_HSWzQDGD_AACAQ0i.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1016.0, 590.0, 1016.0, 593.0, 987.0, 593.0, 987.0, 607.0, 1016.0, 607.0, 1016.0, 613.0, 987.0, 613.0, 987.0, 627.0, 1016.0, 627.0, 1016.0, 630.0, 1030.0, 630.0, 1030.0, 627.0, 1033.0, 627.0, 1033.0, 613.0, 1030.0, 613.0, 1030.0, 607.0, 1033.0, 607.0, 1033.0, 593.0, 1030.0, 593.0, 1030.0, 590.0" coords2="1016.0, 590.0, 1016.0, 593.0, 987.0, 593.0, 987.0, 607.0, 1016.0, 607.0, 1016.0, 613.0, 987.0, 613.0, 987.0, 627.0, 1016.0, 627.0, 1016.0, 630.0, 1030.0, 630.0, 1030.0, 627.0, 1033.0, 627.0, 1033.0, 613.0, 1030.0, 613.0, 1030.0, 607.0, 1033.0, 607.0, 1033.0, 593.0, 1030.0, 593.0, 1030.0, 590.0" shape="poly" alt="1.3.3: Menghapus Catatan:Message" id="areadiagram_map_qLOzQDGD.AACAQ09_default" href="Message_gLOzQDGD_AACAQ06.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="990, 483, 997, 631" coords2="990, 483, 997, 631" shape="rect" alt="Activation:Activation" id="areadiagram_map_qatTQDGD.AACAQwj_default" href="Activation_yatTQDGD_AACAQwh.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="724, 246, 731, 435" coords2="724, 246, 731, 435" shape="rect" alt="Activation:Activation" id="areadiagram_map_TA1TQDGD.AACAQwL_default" href="Activation_DA1TQDGD_AACAQwJ.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="497, 84, 504, 205" coords2="497, 84, 504, 205" shape="rect" alt="Activation:Activation" id="areadiagram_map_UkFTQDGD.AACAQvz_default" href="Activation_4kFTQDGD_AACAQvx.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="209, 64, 216, 532" coords2="209, 64, 216, 532" shape="rect" alt="Activation:Activation" id="areadiagram_map_tWpTQDGD.AACAQvf_default" href="Activation_1WpTQDGD_AACAQvd.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="932, 2, 1054, 36" coords2="932, 2, 1054, 36" shape="rect" alt="Mengelola Catatan:Lifeline" id="areadiagram_map_AQRTQDGD.AACAQvK_default" href="InteractionLifeLine_AQRTQDGD_AACAQvL.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="674, 2, 781, 36" coords2="674, 2, 781, 36" shape="rect" alt="Mengelola Buku:Lifeline" id="areadiagram_map_BsBTQDGD.AACAQvB_default" href="InteractionLifeLine_hsBTQDGD_AACAQvC.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="447, 2, 554, 36" coords2="447, 2, 554, 36" shape="rect" alt="Mengelola Akun:Lifeline" id="areadiagram_map_DZeTQDGD.AACAQu4_default" href="InteractionLifeLine_DZeTQDGD_AACAQu5.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="167, 2, 258, 36" coords2="167, 2, 258, 36" shape="rect" alt="Login Sukses:Lifeline" id="areadiagram_map_cSOTQDGD.AACAQut_default" href="InteractionLifeLine_cSOTQDGD_AACAQuu.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="12, 2, 71, 36" coords2="12, 2, 71, 36" shape="rect" alt="Pustakawan:Actor" id="areadiagram_map_rpWTQDGD.AACAQui_default" href="InteractionActor_rpWTQDGD_AACAQuj.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+</map>
+				</td>
+			</tr>
+		</table>
+		<p>
+		</p>
+	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+				Model Elements			</td>
+		</tr>
+		<tr>
+			<td style="height: 5px">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="4" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="30%">
+<span class="TableHeaderText">Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td>
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Activation.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Activation.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="Activation_yatTQDGD_AACAQwh.html" class="ItemLink">Activation : Activation</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Activation.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Activation.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="Activation_DA1TQDGD_AACAQwJ.html" class="ItemLink">Activation : Activation</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Activation.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Activation.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="Activation_4kFTQDGD_AACAQvx.html" class="ItemLink">Activation : Activation</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Activation.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Activation.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="Activation_1WpTQDGD_AACAQvd.html" class="ItemLink">Activation : Activation</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/LifeLine.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/LifeLine.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="InteractionLifeLine_AQRTQDGD_AACAQvL.html" class="ItemLink">Mengelola Catatan : Lifeline</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/LifeLine.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/LifeLine.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="InteractionLifeLine_hsBTQDGD_AACAQvC.html" class="ItemLink">Mengelola Buku : Lifeline</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/LifeLine.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/LifeLine.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="InteractionLifeLine_DZeTQDGD_AACAQu5.html" class="ItemLink">Mengelola Akun : Lifeline</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/LifeLine.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/LifeLine.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="InteractionLifeLine_cSOTQDGD_AACAQuu.html" class="ItemLink">Login Sukses : Lifeline</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Actor.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Actor.png'); background-repeat: no-repeat;">
+					</div>
+					&nbsp; <a href="InteractionActor_rpWTQDGD_AACAQuj.html" class="ItemLink">Pustakawan : Actor</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<div style="height: 20px">
+	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		Library Management System	</div>
+</body>
+</html>
